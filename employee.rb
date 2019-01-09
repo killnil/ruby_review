@@ -29,6 +29,23 @@ class Manager < Employee
     # code to send report
     puts "Email sent."
   end
+
+  def give_all_raises
+    @employees.each { |employee| employee.give_annual_raise }
+  end
+
+  def fire_all_employees
+    # input: the list of employees aka @employees
+    # what behavoirs do I need access to? change active status on an employee object Employee#active=
+    # effcct or output: change all employees that this manager monitors to a an active status of false
+
+    # access to an employee, one at a time.
+    # change active status to false
+
+    @employees.length.times do |index|
+      @employees[index].active = false
+    end
+  end
 end
 
 
@@ -54,8 +71,11 @@ manager = Manager.new(
                       employees: [employee_1, employee_2]
                       )
 
-p manager
-
+p employee_1.active
+p employee_2.active
+manager.fire_all_employees
+p employee_1.active
+p employee_2.active
 
 
 
