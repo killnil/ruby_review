@@ -1,4 +1,4 @@
- Employee
+ class Employee
   attr_reader :first_name, :last_name, :active
   attr_writer :active
 
@@ -15,6 +15,14 @@
 
   def give_annual_raise
     @salary *= 1.05
+  end
+end
+
+class Manager < Employee
+  def send_report
+    puts "Sending report..."
+    # code to send report
+    puts "Email sent."
   end
 end
 
@@ -35,6 +43,16 @@ employee_2 = Employee.new(
 
 employee_1.print_info
 employee_2.print_info
+
+manager = Manager.new(
+                      first_name: "Grace",
+                      last_name: "Hopper",
+                      salary: 100000,
+                      active: true
+                      )
+
+manager.print_info
+manager.send_report
 
 
 
