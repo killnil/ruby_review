@@ -30,22 +30,6 @@ class Employee
   def give_annual_raise
     @salary *= 1.05
   end
-
-  # def first_name
-  #   @first_name
-  # end
-
-  # def last_name
-  #   @last_name
-  # end
-
-  # def active
-  #   @active
-  # end
-
-  def active=(new_active_status)
-    @active = new_active_status
-  end
 end
 
 
