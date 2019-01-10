@@ -1,6 +1,8 @@
 require "./employee.rb"
 require "./reportable.rb"
 
-class Intern < Employee
-  include Reportable
+module Actualize
+  class Intern < Employee
+    include Reportable
+  end
 end
