@@ -1,3 +1,11 @@
+ module Reportable
+  def send_report
+    puts "Sending report..."
+    # code to send report
+    puts "Email sent."
+  end
+ end
+
  class Employee
   attr_reader :first_name, :last_name, :active
   attr_writer :active
@@ -19,15 +27,11 @@
 end
 
 class Manager < Employee
+  include Reportable
+
   def initialize(input_options)
     super(input_options)
     @employees = input_options[:employees]
-  end
-
-  def send_report
-    puts "Sending report..."
-    # code to send report
-    puts "Email sent."
   end
 
   def give_all_raises
@@ -35,17 +39,14 @@ class Manager < Employee
   end
 
   def fire_all_employees
-    # input: the list of employees aka @employees
-    # what behavoirs do I need access to? change active status on an employee object Employee#active=
-    # effcct or output: change all employees that this manager monitors to a an active status of false
-
-    # access to an employee, one at a time.
-    # change active status to false
-
     @employees.length.times do |index|
       @employees[index].active = false
     end
   end
+end
+
+class Intern < Employee
+  include Reportable
 end
 
 
@@ -71,8 +72,16 @@ manager = Manager.new(
                       employees: [employee_1, employee_2]
                       )
 
-manager.print_info
+intern = Intern.new(
+                    first_name: "Jimmy",
+                    last_name: "Olsen",
+                    salary: 25000,
+                    active: true
+                    )
 
+manager.print_info
+intern.print_info
+intern.send_report
 
 
 
